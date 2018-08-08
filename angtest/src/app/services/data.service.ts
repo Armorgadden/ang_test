@@ -6,7 +6,7 @@ export class DataService {
 
   constructor(public httpClient: HttpClient) { }
 
-  selectedResult: any;
+  selectedResult: any = {};
 
   getRestaurants(key) {
     const headers = { 'Content-Type': 'application/json' };

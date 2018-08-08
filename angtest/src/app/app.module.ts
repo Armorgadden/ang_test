@@ -15,7 +15,6 @@ import { CustomHttpInterceptor } from './app.interceptor';
 
 //External Modules
 import { DropdownModule } from 'ngx-dropdown';
-import { SelectDropDownModule } from 'ngx-select-dropdown';
 
 //Services
 import { DataService } from './services/data.service';
@@ -38,7 +37,6 @@ import { NotificationService } from './services/notification.service';
     HttpClientModule,
     CustomRouter,
     DropdownModule,
-    SelectDropDownModule
   ],
   providers: [
     DataService,
