@@ -1,14 +1,20 @@
 <table>
-  <tbody><tr>
-    <th>Firstname</th>
-    <th>Lastname</th>
-  </tr>
-  <tr>
-    <td>Peter</td>
-    <td>Griffin</td>
-  </tr>
-  <tr>
-    <td>Lois</td>
-    <td>Griffin</td>
-  </tr>
-</tbody></table>
+  <tbody>
+    <tr>
+      <th>Restaurant Name</th>
+      <th>Street Address</th>
+      <th>Area</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Type</th>
+    </tr>
+    <tr>
+      <td>{{ dataService.selectedResult.search_name }}</td>
+      <td>{{ dataService.selectedResult.address }}</td>
+      <td>{{ dataService.selectedResult.area }}</td>
+      <td>{{ dataService.selectedResult.city }}</td>
+      <td>{{ dataService.selectedResult.country }}</td>
+      <td>{{ getTypeData() }}</td>
+    </tr>
+  </tbody>
+</table>
