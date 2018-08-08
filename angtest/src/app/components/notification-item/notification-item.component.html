@@ -1,0 +1,18 @@
+<div class="app-notification-item"
+    [@enterLeave]='item.state'
+    (click)='removeOnClick()'
+    [class]='theClass'
+
+    [ngClass]="{
+                'error': item.type === 'error',
+                'success': item.type === 'success',
+                'info': item.type === 'info'
+            }"
+
+    (mouseenter)='onEnter()'
+    (mouseleave)='onLeave()'>
+
+    <div class="notification-content" *ngIf="item.content" [innerHTML]="item.content">
+    </div>
+
+</div>

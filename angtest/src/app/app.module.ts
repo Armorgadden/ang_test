@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Components
 import { AppComponent } from './app.component';
-import { FormComponent, ResultComponent } from './components/index';
+import { FormComponent, ResultComponent, NotificationComponent, NotificationItemComponent } from './components/index';
 
 //Override Modules
 import { CustomRouter } from './app.routes';
@@ -22,7 +22,9 @@ import { NotificationService } from './services/notification.service';
   declarations: [
     AppComponent,
     FormComponent,
-    ResultComponent
+    ResultComponent,
+    NotificationComponent,
+    NotificationItemComponent
   ],
   imports: [
     BrowserAnimationsModule,

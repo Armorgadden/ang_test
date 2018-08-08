@@ -1,0 +1,13 @@
+<div class="notification-wrapper" [ngClass]="position">
+    <app-notification-item
+        *ngFor="let a of notifications; let i = index"
+        [item]="a"
+        [timeOut]="timeOut"
+        [clickToClose]="clickToClose"
+        [pauseOnHover]="pauseOnHover"
+        [theClass]="theClass"
+        [animate]="animate"
+        [position]="i"
+        >
+    </app-notification-item>
+</div>

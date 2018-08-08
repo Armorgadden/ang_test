@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'app';
+  notificationOptions = {
+    timeOut: 5000,
+    lastOnBottom: true,
+    clickToClose: true,
+    maxStack: 7,
+    preventDuplicates: false,
+    preventLastDuplicates: 'visible',
+    animate: 'fromLeft',
+    position: ['left', 'bottom']
+  }
 }
