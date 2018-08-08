@@ -2,7 +2,7 @@
   <div class="restaurant-name-wrapper">
     <div class="text-field">Restaurant Name:</div>
     <div class="dropdown" dropdown [dropdownToggle]="false">
-      <input id="restaurant-name-input" class="input-field" placeholder="Enter name or location" dropdown-open >
+      <input id="restaurant-name-input" class="input-field" placeholder="Enter name or location" dropdown-open (input)="onRestaurantNameInputChange($event)">
       <div class="dropdown-menu"></div>
     </div>
   </div>
