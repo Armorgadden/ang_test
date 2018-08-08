@@ -13,6 +13,10 @@ import { CustomRouter } from './app.routes';
 import { CustomErrorHandler } from './app.error.handler';
 import { CustomHttpInterceptor } from './app.interceptor';
 
+//External Modules
+import { DropdownModule } from 'ngx-dropdown';
+import { SelectDropDownModule } from 'ngx-select-dropdown';
+
 //Services
 import { DataService } from './services/data.service';
 import { NotificationService } from './services/notification.service';
@@ -33,6 +37,8 @@ import { NotificationService } from './services/notification.service';
     BrowserModule,
     HttpClientModule,
     CustomRouter,
+    DropdownModule,
+    SelectDropDownModule
   ],
   providers: [
     DataService,
