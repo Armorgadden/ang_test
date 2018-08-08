@@ -14,6 +14,23 @@ export class FormComponent implements OnInit {
   restaurantNameInputListener: Subject<any> = new Subject<any>();
   autoCompleteResults: any[] = [];
 
+  restaurantType = [
+    { item_id: 1, item_text: 'Cafe' },
+    { item_id: 2, item_text: 'Bar' },
+    { item_id: 3, item_text: 'Restaurant' }
+  ];
+  restaurantTypeSelectedItems = [];
+  multiSelectDropdownSettings: any = {
+    singleSelection: false,
+    idField: 'item_id',
+    textField: 'item_text',
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    itemsShowLimit: 3,
+    allowSearchFilter: true
+  };
+
+
   testData: any[] = [
     {
       unique_id:"a25d19cb8d8c370ce14b4da935a8a9dabfef48fa",
@@ -21,7 +38,7 @@ export class FormComponent implements OnInit {
       "search_name":"Karaokebar Bar-In, Sankt-Peterburg",
       "short_address":" SanktPeterburg",
       "address":"Rest,Industrial'nyy Prospekt, 40. 1, Sankt-Peterburg, Russia,195279",
-      "area":"",
+      "area":"wererew",
       "city":"SanktPeterburg",
       "country":"Russia",
       "rating":4.1,
@@ -36,8 +53,8 @@ export class FormComponent implements OnInit {
       "search_name":"Test 2",
       "short_address":" SanktPeterburg",
       "address":"Rest,Industrial'nyy Prospekt, 40. 1, Sankt-Peterburg, Russia,195279",
-      "area":"",
-      "city":"SanktPeterburg",
+      "area":"2132434324",
+      "city":"dsgdgfg",
       "country":"Russia",
       "rating":4.1,
       "type":"night_club,bar,restaurant,food,point_of_interest,establishment",
@@ -51,8 +68,8 @@ export class FormComponent implements OnInit {
       "search_name":"Test 3",
       "short_address":" SanktPeterburg",
       "address":"Rest,Industrial'nyy Prospekt, 40. 1, Sankt-Peterburg, Russia,195279",
-      "area":"",
-      "city":"SanktPeterburg",
+      "area":"657675",
+      "city":"gk456",
       "country":"Russia",
       "rating":4.1,
       "type":"night_club,bar,restaurant,food,point_of_interest,establishment",
@@ -72,7 +89,6 @@ export class FormComponent implements OnInit {
     .subscribe((data)=> {
       if(data.length >= 3) {
         this.autoCompleteResults = this.testData;
-
 /*        this.dataService.getRestaurants(data).subscribe((response: any)=>{
           console.log(response);
           this.autoCompleteResults = response.data || [];
@@ -83,12 +99,33 @@ export class FormComponent implements OnInit {
     });
   }
 
+  setRestaurantTypesSelectedItems() {
+    this.restaurantTypeSelectedItems = [];
+    if(this.dataService.selectedResult.cafe === 'yes') {
+      this.restaurantTypeSelectedItems.push(this.restaurantType[0]);
+    }
+    if(this.dataService.selectedResult.bar === 'yes') {
+      this.restaurantTypeSelectedItems.push(this.restaurantType[1]);
+    }
+    if(this.dataService.selectedResult.restaurant === 'yes') {
+      this.restaurantTypeSelectedItems.push(this.restaurantType[2]);
+    }
+  }
+
+  onItemSelect (item:any) {
+    console.log(item);
+  }
+  onSelectAll (items: any) {
+    console.log(items);
+  }
+
   onRestaurantNameInputChange(event) {
     event && event.target && this.restaurantNameInputListener.next(event.target.value);
   }
 
   selectRestaurantNameFromDropdown(index) {
     this.dataService.selectedResult = this.autoCompleteResults[index];
+    this.setRestaurantTypesSelectedItems();
   }
 
 }

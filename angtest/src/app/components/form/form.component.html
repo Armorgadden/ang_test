@@ -30,5 +30,11 @@
   </div>
   <div class="restaurant-type-wrapper">
     <div class="text-field">Restaurant Type</div>
+    <ng-multiselect-dropdown
+      [placeholder]="'Restaurant Type'"
+      [data]="restaurantType"
+      [(ngModel)]="restaurantTypeSelectedItems"
+      [settings]="multiSelectDropdownSettings">
+    </ng-multiselect-dropdown>
   </div>
 </div>
