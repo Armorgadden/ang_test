@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Subject } from 'rxjs/Subject';
+import { NotificationService } from '../../services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -9,7 +11,7 @@ import { Subject } from 'rxjs/Subject';
 })
 export class FormComponent implements OnInit {
 
-  constructor(public dataService: DataService) { }
+  constructor(public dataService: DataService, public notficationService: NotificationService, public router: Router) { }
 
   restaurantNameInputListener: Subject<any> = new Subject<any>();
   autoCompleteResults: any[] = [];
@@ -29,7 +31,6 @@ export class FormComponent implements OnInit {
     itemsShowLimit: 3,
     allowSearchFilter: true
   };
-
 
   testData: any[] = [
     {
@@ -78,16 +79,13 @@ export class FormComponent implements OnInit {
       "restaurant":"yes"
     }];
 
-
-
-
-
   ngOnInit() {
     this.restaurantNameInputListener
     .debounceTime(300)
     .distinctUntilChanged()
     .subscribe((data)=> {
       if(data.length >= 3) {
+        this.notficationService.info('Please wait');
         this.autoCompleteResults = this.testData;
 /*        this.dataService.getRestaurants(data).subscribe((response: any)=>{
           console.log(response);
@@ -112,13 +110,6 @@ export class FormComponent implements OnInit {
     }
   }
 
-  onItemSelect (item:any) {
-    console.log(item);
-  }
-  onSelectAll (items: any) {
-    console.log(items);
-  }
-
   onRestaurantNameInputChange(event) {
     event && event.target && this.restaurantNameInputListener.next(event.target.value);
   }
@@ -126,6 +117,14 @@ export class FormComponent implements OnInit {
   selectRestaurantNameFromDropdown(index) {
     this.dataService.selectedResult = this.autoCompleteResults[index];
     this.setRestaurantTypesSelectedItems();
+  }
+
+  goToResults() {
+    if(this.dataService.selectedResult && Object.keys(this.dataService.selectedResult).length > 0) {
+      this.router.navigate(['/result']);
+    } else {
+      this.notficationService.error('Please select a value from restaurant dropdown');
+    }
   }
 
 }

@@ -12,36 +12,34 @@
   .restaurant-name-wrapper {
     .dropdown {
       float: right;
-      &.open {
-        .dropdow-menu {
-          display: block;
-        }
-      }
 
       .dropdown-menu {
         display: none;
+        position: absolute;
+        top: 75px;
+        z-index: 9999;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        background: #fff;
+        box-shadow: 0 1px 5px #959595;
+      }
+
+      &.open {
+        .dropdown-menu {
+          display: block;
+        }
       }
     }
   }
 
-  .street-address-wrapper {
-
+  .next-button {
+    margin:0 auto;
+    display:block;
   }
 
-  .area-wrapper {
-
-  }
-
-  .city-wrapper {
-
-  }
-
-  .country-wrapper {
-
-  }
-
-  .restaurant-type-wrapper {
-
+  .multi-select-dropdown {
+    float: right;
+    width: 200px;
   }
 }
 
