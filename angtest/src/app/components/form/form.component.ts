@@ -15,6 +15,7 @@ export class FormComponent implements OnInit {
 
   restaurantNameInputListener: Subject<any> = new Subject<any>();
   autoCompleteResults: any[] = [];
+  isDataLoading: boolean = false;
 
   restaurantType = [
     { item_id: 1, item_text: 'Cafe' },
@@ -84,16 +85,24 @@ export class FormComponent implements OnInit {
     .debounceTime(300)
     .distinctUntilChanged()
     .subscribe((data)=> {
-      if(data.length >= 3) {
-        this.notficationService.info('Please wait');
-        this.autoCompleteResults = this.testData;
-/*        this.dataService.getRestaurants(data).subscribe((response: any)=>{
-          console.log(response);
-          this.autoCompleteResults = response.data || [];
-        }, (error)=>{
-          throw error;
-        });*/
-      }
+      this.isDataLoading = true;
+      this.notficationService.info('Please wait');
+
+      setTimeout(()=>{
+        if(data.length >= 3) {
+          this.autoCompleteResults = this.testData;
+          this.isDataLoading = false;
+  /*        this.dataService.getRestaurants(data).subscribe((response: any)=>{
+            console.log(response);
+            this.autoCompleteResults = response.data || [];
+            this.isDateLoading = false;
+          }, (error)=>{
+            this.isDateLoading = false;
+            throw error;
+          });*/
+        }
+      }, 2000);
+
     });
   }
 
