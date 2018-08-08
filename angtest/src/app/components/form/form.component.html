@@ -1,5 +1,5 @@
 <div class="form-wrapper">
-  <div class="restaurant-name-wrapper">
+  <div class="restaurant-name-wrapper wrapper-common clearfix">
     <div class="text-field">Restaurant Name:</div>
     <div class="dropdown" dropdown [dropdownToggle]="false">
       <input id="restaurant-name-input" class="input-field" placeholder="Enter name or location" dropdown-open (input)="onRestaurantNameInputChange($event)">
@@ -12,23 +12,23 @@
       </div>
     </div>
   </div>
-  <div class="street-address-wrapper">
+  <div class="street-address-wrapper wrapper-common clearfix">
     <div class="text-field">Street Address:</div>
     <input id="restaurant-name-input" class="input-field" [(ngModel)]="dataService.selectedResult.address">
   </div>
-  <div class="area-wrapper">
+  <div class="area-wrapper wrapper-common clearfix">
     <div class="text-field">Area:</div>
     <input id="restaurant-name-input" class="input-field" [(ngModel)]="dataService.selectedResult.area">
   </div>
-  <div class="city-wrapper">
+  <div class="city-wrapper wrapper-common clearfix">
     <div class="text-field">City:</div>
     <input id="restaurant-name-input" class="input-field" [(ngModel)]="dataService.selectedResult.city">
   </div>
-  <div class="country-wrapper">
+  <div class="country-wrapper wrapper-common clearfix">
     <div class="text-field">Country:</div>
     <input id="restaurant-name-input" class="input-field" [(ngModel)]="dataService.selectedResult.country">
   </div>
-  <div class="restaurant-type-wrapper">
+  <div class="restaurant-type-wrapper wrapper-common clearfix">
     <div class="text-field">Restaurant Type</div>
     <ng-multiselect-dropdown
       [placeholder]="'Restaurant Type'"
